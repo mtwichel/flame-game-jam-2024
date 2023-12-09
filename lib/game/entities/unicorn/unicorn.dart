@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
@@ -42,12 +43,13 @@ class Unicorn extends PositionedEntity with HasGameRef {
       ),
     );
 
-    await add(
+    await addAll([
       _animationComponent = SpriteAnimationComponent(
         animation: animation,
         size: size,
       ),
-    );
+      RectangleHitbox(),
+    ]);
 
     resetAnimation();
   }

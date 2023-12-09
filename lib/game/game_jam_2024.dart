@@ -3,10 +3,12 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/painting.dart';
+import 'package:game_jam_2024/game/entities/fireplace/fireplace.dart';
 import 'package:game_jam_2024/game/game.dart';
 import 'package:game_jam_2024/l10n/l10n.dart';
 
-class VeryGoodFlameGame extends FlameGame with HasKeyboardHandlerComponents {
+class VeryGoodFlameGame extends FlameGame
+    with HasKeyboardHandlerComponents, HasCollisionDetection {
   VeryGoodFlameGame({
     required this.l10n,
     required this.effectPlayer,
@@ -31,12 +33,7 @@ class VeryGoodFlameGame extends FlameGame with HasKeyboardHandlerComponents {
     final world = World(
       children: [
         Unicorn(position: size / 2),
-        CounterComponent(
-          position: (size / 2)
-            ..sub(
-              Vector2(0, 16),
-            ),
-        ),
+        Fireplace(position: (size / 2)..sub(Vector2(20, 20))),
       ],
     );
 
